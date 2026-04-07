@@ -1,5 +1,5 @@
 <?php
-// index.php
+include 'header.php';
 ?>
 <!DOCTYPE html>
 <html lang="sl">

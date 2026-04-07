@@ -84,7 +84,7 @@ INSERT INTO zanr (naziv)
 VALUES ('fantazija');
 
 INSERT INTO avtor (ime, priimek, leto_rojstva)
-VALUES ('Rebecca', 'Yarros', 1981-4-13);
+VALUES ('Rebecca', 'Yarros', '1981-4-13');
 
 ALTER TABLE knjiga
 MODIFY COLUMN leto_izdaje YEAR;
