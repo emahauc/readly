@@ -79,3 +79,19 @@ CREATE TABLE IF NOT EXISTS komentar(
     FOREIGN KEY (uporabnik) REFERENCES uporabnik(id),
     FOREIGN KEY (knjiga) REFERENCES knjiga(id)
 );
+
+INSERT INTO zanr (naziv)
+VALUES ('fantazija');
+
+INSERT INTO avtor (ime, priimek, leto_rojstva)
+VALUES ('Rebecca', 'Yarros', 1981-4-13);
+
+ALTER TABLE knjiga
+MODIFY COLUMN leto_izdaje YEAR;
+
+INSERT INTO knjiga (naslov, avtor, leto_izdaje, zanr, stevilka_strani, opis)
+VALUES ('Forth Wing', 1, 2023, 1, 528, 'Zgodba spremlja 20-letno Violet Sorrengail, ki je bila vse življenje urjena za Scribe Quadrant (krog pisarjev), kjer bi živela mirno življenje med knjigami in zgodovino. Vendar jo njena mati, neusmiljena generalinja, prisili, da se pridruži stotinam kandidatov, ki si želijo postati elitni jezdeci zmajev v kraljestvu Navarre.');
+
+INSERT INTO uporabnik (ime, priimek, mail, uporabnisko_ime, geslo)
+VALUES ('Ema', 'Hauc', 'ema.hauc29@gmail.com','emi.em', 'root');
+        
