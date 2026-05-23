@@ -93,5 +93,5 @@ INSERT INTO knjiga (naslov, avtor, leto_izdaje, zanr, stevilka_strani, opis)
 VALUES ('Forth Wing', 1, 2023, 1, 528, 'Zgodba spremlja 20-letno Violet Sorrengail, ki je bila vse življenje urjena za Scribe Quadrant (krog pisarjev), kjer bi živela mirno življenje med knjigami in zgodovino. Vendar jo njena mati, neusmiljena generalinja, prisili, da se pridruži stotinam kandidatov, ki si želijo postati elitni jezdeci zmajev v kraljestvu Navarre.');
 
 INSERT INTO uporabnik (ime, priimek, mail, uporabnisko_ime, geslo)
-VALUES ('Ema', 'Hauc', 'ema.hauc29@gmail.com','emi.em', 'root');
+VALUES ('Ema', 'Hauc', 'ema.hauc29@gmail.com','emi.em', '$2y$10$FXtjTkXRbRbpd/TiocRK4e7cBEdJGY3Rd4UoVzOpbjDYL.lalhhKu');
         

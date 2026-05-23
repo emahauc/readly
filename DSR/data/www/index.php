@@ -1,5 +1,41 @@
 <?php
 include 'header.php';
+require 'databaseconnection.php';
+echo 'index line 4';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $mail = $_POST["mail"];
+    $geslo = $_POST["geslo"];
+    echo 'index line 8';
+
+    // We select the ID as well so we can store it in the session
+    $stmt = $conn->prepare("SELECT id, geslo FROM uporabnik WHERE mail = :mail");
+    $stmt->bindParam(":mail", $mail);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo 'index line 15';
+    echo $mail;
+    echo $geslo;
+    echo $result["geslo"];
+    echo '<br>';
+    echo password_verify($geslo, $result["geslo"]);
+    echo 'line 23';
+
+    if (password_verify($geslo, $result["geslo"])) {
+
+        $_SESSION['user_id'] = $result['id'];
+        $_SESSION['uporabnik'] = $mail;
+
+        header("Location: home.php");
+        echo 'prijava dela';
+        exit;
+    } else {
+        $error = "Invalid username or password.";
+        echo $error;
+    }
+}
+
+phpversion();
 ?>
 <!DOCTYPE html>
 <html lang="sl">
@@ -32,12 +68,13 @@ include 'header.php';
         </p>
 
         <!-- Forma (brez PHP) -->
-        <form id="loginForm">
+        <form id="loginForm" method = "POST">
 
             <div class="mb-3">
                 <input 
                     type="email" 
-                    id="email"
+                    id="mail"
+                    name="mail"
                     class="form-control login-input"
                     placeholder="e-mail"
                 >
@@ -46,7 +83,8 @@ include 'header.php';
             <div class="mb-4">
                 <input 
                     type="password" 
-                    id="password"
+                    id="geslo"
+                    name="geslo"
                     class="form-control login-input"
                     placeholder="geslo"
                 >
@@ -61,24 +99,7 @@ include 'header.php';
 
     </div>
 
-<!-- SAMO FUNKCIONALNOST (JS) -->
-<script>
-    const form = document.getElementById("loginForm");
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
-    const errorMsg = document.getElementById("errorMsg");
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        if (email.value.trim() === "" || password.value.trim() === "") {
-            errorMsg.style.display = "block";
-        } else {
-            errorMsg.style.display = "none";
-            window.location.href = "home.php";
-        }
-    });
-</script>
 
 </body>
 </html>
