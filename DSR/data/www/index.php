@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include 'header.php';
 require 'databaseconnection.php';
 echo 'index line 4';
@@ -35,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-phpversion();
 ?>
 <!DOCTYPE html>
 <html lang="sl">
